@@ -36,8 +36,8 @@ const Header = () => {
       </a>
       {!userDetail?.name && (
         <div className='flex gap-5'>
-          <Button variant={'ghost'} onClick={handleOpenDialog}>Sign in</Button>
-          <Button className='bg-[#2ba6ff] text-white' onClick={handleOpenDialog}>Get started</Button>
+          <Button variant={'ghost'} onClick={handleOpenDialog}> Login </Button>
+          <Button variant={'ghost'} className='bg-[#00000] text-white' onClick={handleOpenDialog}>Get started</Button>
         </div>
       )}
       {
