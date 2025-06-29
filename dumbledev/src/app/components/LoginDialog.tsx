@@ -55,10 +55,10 @@ const LoginDialog = ({openDialog,closeDialog}) => {
             <DialogTitle></DialogTitle>
             <DialogDescription >
                 <div className='flex flex-col justify-center items-center gap-2'>
-                <h2 className='font-bold text-2xl text-white'>{Lookup.SIGNIN_HEADING}</h2>
-                <p className='mt-2 text-center'>{Lookup.SIGNIN_SUBHEADING}</p>
-                <Button onClick={() => googleLogin()} className='bg-blue-500 mt-2 hover:bg-blue-400'>Sign In with Google</Button>
-                <p>{Lookup.SIGNIN_AGREEMENT_TEXT}</p>
+                    <h2 className='font-bold text-2xl text-white'>To Continue to DumbleDev AI</h2>
+                    <p className='mt-2 text-center'>To use DumbleDev, you must log into an existing account or create a new one.</p>
+                    <Button onClick={() => googleLogin()} className='bg-blue-500 mt-2 hover:bg-blue-400'>Sign In with Google</Button>
+                    <p>By using DumbleDev, you agree to the collection of usage data for analytics.</p>
                 </div>
             </DialogDescription>
             </DialogHeader>
