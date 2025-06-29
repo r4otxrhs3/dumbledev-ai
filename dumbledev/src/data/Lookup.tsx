@@ -1,13 +1,13 @@
 import dedent from "dedent";
 
 export default {
-  SUGGESTIONS: ['Create ToDo App in React', 'Create Budget Track App', 'Create Gym Management Portal Dashboard', 'Create Quiz App On History', 'Create Login Signup Screen'],
-  HERO_HEADING: 'What do you want to build?',
-  HERO_DESC: 'Prompt, run, edit, and deploy full-stack web apps.',
-  INPUT_PLACEHOLDER: 'What you want to build?',
-  SIGNIN_HEADING: 'Continue With Bolt.New 2.0',
-  SIGNIN_SUBHEADING: 'To use Bolt you must log into an existing account or create one.',
-  SIGNIN_AGREEMENT_TEXT: 'By using Bolt, you agree to the collection of usage data for analytics.',
+  SUGGESTIONS: [],
+  HERO_HEADING: 'What Vibe-Code Do I Have To Explain Today?',
+  HERO_DESC: 'Prompt, run, edit, and deploy websites that you don\'t understand and then pretend to be a pro',
+  INPUT_PLACEHOLDER: 'Put in your vibe-code here',
+  SIGNIN_HEADING: 'Continue to DumbleDev',
+  SIGNIN_SUBHEADING: 'To use DumbleDev AI you must log into an existing account or create one.',
+  SIGNIN_AGREEMENT_TEXT: 'By using DumbleDev, you agree to the collection of usage data for analytics.',
 
   DEFAULT_FILE: {
     '/public/index.html': {
