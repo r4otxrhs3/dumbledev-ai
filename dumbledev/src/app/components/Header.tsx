@@ -32,7 +32,7 @@ const Header = () => {
   return (
     <div className='p-4 flex items-center justify-between'>
       <a href='/'>
-        <Image src={"https://bolt.new/static/favicon.svg"} alt='Logo' width={50} height={50} />
+        <Image src={"dumbledev/public/dumbledev.jpg"} alt='Logo' width={50} height={50} />
       </a>
       {!userDetail?.name && (
         <div className='flex gap-5'>

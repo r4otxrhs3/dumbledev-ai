@@ -43,6 +43,7 @@ const LoginDialog = ({openDialog,closeDialog}) => {
           }
           setUserDetail(userInfo.data)
           closeDialog(false);
+          window.location.href = "/"; // or your desired route
         },
         onError: errorResponse => console.log(errorResponse),
       });
