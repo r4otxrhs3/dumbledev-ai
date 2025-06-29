@@ -1,0 +1,23 @@
+{
+  "promptTemplates": [
+    {
+      "name": "Inline Code Comments Generator",
+      "type": "commenting",
+      "description": "Generates inline comments for given code across any stack.",
+      "user": {
+        "name": "Dhritideep",
+        "level": "intermediate",
+        "prefers": {
+          "commentStyle": "concise",
+          "commentPlacement": "inline",
+          "language": "auto-detect",
+          "avoidObviousComments": true
+        }
+      },
+      "instruction": "You are an AI code assistant. Analyze the following code and return it with helpful inline comments directly above or beside relevant lines. Avoid stating the obvious (e.g., `i++ // increment i`) unless it's truly meaningful in context. Maintain original formatting. Only include the code with inline comments, do not explain anything outside the code.",
+      "contextAwareness": true,
+      "personalization": true,
+      "supportedLanguages": ["Python", "JavaScript", "React", "Flask", "Node.js", "C++", "Java"]
+    }
+  ]
+}

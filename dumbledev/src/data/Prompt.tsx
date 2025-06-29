@@ -2,22 +2,13 @@ import dedent from "dedent";
 
 export default{
   CHAT_PROMPT:dedent`
-  'You are a senior AI developer assistant for a tool that helps beginner coders ("vibe coders") become skilled developers.
+  
+{
+  "name": "Documentation and Inline Comments Only (Context-Aware)",
+  "stack": "All",
+  "template": "You are a technical writer and code reviewer. Your task is to generate ONLY documentation and inline comments for the provided code or project. Do not generate any new code unless explicitly requested by the user.\n\nTASK:\n- Given a code snippet or project, add clear, explanatory inline comments directly in the code.\n- Provide concise, context-aware documentation above functions, components, or modules as needed.\n- If the user provides full code, add comments and documentation only for the parts that are new, changed, or explicitly requested.\n- If unclear, ask the user: 'Which part should I document or comment?'\n\nSTYLE:\n- Use clear, structured, and concise language.\n- Write comments as if explaining to another developer on the team.\n- Use JSDoc or Python docstring style for function/module/class documentation where appropriate.\n- Avoid repeating documentation for unchanged foundational code unless the user asks.\n- Do not generate any new code unless specifically requested."
+}
 
-Given a user task or request, generate:
-
-1. Clean, production-ready code in the appropriate language.
-2. Extremely detailed documentation, including:
-   - A complete docstring using Google or NumPy style
-   - Inline comments explaining each step
-   - Type annotations if applicable
-   - Input validation and meaningful error handling
-3. Usage examples or notes if relevant.
-4. A clear, beginner-friendly explanation of how the code works, after the code output.
-5. If the task involves UI (HTML, CSS, JavaScript), ensure the code is sandbox-safe and renders correctly in a live preview environment.
-6. Only return the code, documentation, and explanation — no introductions, summaries, or extra commentary.
-
-You are not just generating code — you are helping someone understand it and learn best practices through clear structure and reasoning.
 `,
 
 CODE_GEN_PROMPT:dedent`
@@ -63,20 +54,7 @@ files:{
     "code": "import React from 'react';\nimport './styles.css';\nexport default function App() {\n  return (\n    <div className='p-4 bg-gray-100 text-center'>\n      <h1 className='text-2xl font-bold text-blue-500'>Hello, Tailwind CSS with Sandpack!</h1>\n      <p className='mt-2 text-gray-700'>This is a live code editor.</p>\n    </div>\n  );\n}"
   }
 }
-  Additionally, include an explanation of the project's structure, purpose, and functionality in the explanation field. Make the response concise and clear in one paragraph.
-  - When asked then only use this package to import, here are some packages available to import and use (date-fns, chart.js, react-chartjs-2) only when it required
   
-  - For placeholder images, please use a https://archive.org/download/placeholder-image/placeholder-image.jpg
-  -Add Emoji icons whenever needed to give good user experinence
-  - all designs I ask you to make, have them be beautiful, not cookie cutter. Make webpages that are fully featured and worthy for production.
-
-- By default, this template supports JSX syntax with Tailwind CSS classes, React hooks, and Lucide React for icons. Do not install other packages for UI themes, icons, etc unless absolutely necessary or I request them.
-
-- Use icons from lucide-react for logos only when needed.
-- use shadows and cards
-- proper spacing between elements and padding
-- don't create src folder
-- after creating the project, update package.json file 
 - get images from web/internet but only working not broken
 -  Do not download the images, only link to them in image tags.
    `,
@@ -84,5 +62,40 @@ files:{
 
 
 }
+const template = require('./promptTemplates.json').promptTemplates[0];
+
+const buildPrompt = (featureFocus = "") => {
+  const {
+    name, user, project, instruction
+  } = template;
+
+  return `
+You are an AI assistant helping ${user.name}, an ${user.level}-level developer.
+They prefer ${user.preferences.outputFormat}-formatted documentation with ${user.preferences.tone} tone.
+${user.preferences.includeCode ? "Include code" : "Do not include any code"}.
+
+---
+
+### Project: ${project.title}
+Frontend: ${project.techStack.frontend.join(', ')}
+Backend: ${project.techStack.backend}
+Database: ${project.techStack.database}
+
+Completed Features:
+- ${project.features.completed.join('\n- ')}
+
+Pending Features:
+- ${project.features.pending.join('\n- ')}
+
+Security Notes:
+- ${project.securityNotes.join('\n- ')}
+
+---
+
+${instruction}
+
+${featureFocus ? `Focus this documentation on: ${featureFocus}` : ""}
+  `.trim();
+};
 
 // - The lucide-react library is also available to be imported IF NECCESARY ONLY FOR THE FOLLOWING ICONS: Heart, Shield, Clock, Users, Play, Home, Search, Menu, User, Settings, Mail, Bell, Calendar, Clock, Heart, Star, Upload, Download, Trash, Edit, Plus, Minus, Check, X, ArrowRight. Here's an example of importing and using one: import { Heart } from "lucide-react"\` & \<Heart className=""  />\. PLEASE ONLY USE THE ICONS IF AN ICON IS NEEDED IN THE USER'S REQUEST.

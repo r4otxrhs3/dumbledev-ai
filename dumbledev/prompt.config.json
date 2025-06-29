@@ -1,0 +1,59 @@
+{
+  "user": {
+    "name": "Dhritideep",
+    "level": "intermediate",
+    "prefers_code_explanation": true,
+    "prefers_documentation_only": true,
+    "tone": "concise",
+    "format": "markdown"
+  },
+  "project": {
+    "title": "Online Clothing Store",
+    "description": "A basic e-commerce web app where users can view clothes, add them to a cart, and view/remove cart items. Built using Flask and basic frontend templates.",
+    "tech_stack": {
+      "frontend": "HTML/CSS with Jinja2",
+      "backend": "Flask (Python)",
+      "database": "None (static in-memory dictionary)",
+      "templating": true,
+      "session_handling": false
+    },
+    "features_done": [
+      "view_products",
+      "add_to_cart",
+      "view_cart",
+      "remove_from_cart",
+      "basic styling with static CSS",
+      "placeholder image generation"
+    ],
+    "features_pending": [
+      "user login",
+      "apply_coupon",
+      "checkout_flow",
+      "session-based cart",
+      "product category filters",
+      "search functionality"
+    ],
+    "security_notes": [
+      "No user authentication implemented",
+      "Cart is stored in a global variable, not session-safe"
+    ],
+    "design_patterns": ["Modular Flask routes", "Template rendering"],
+    "deployment_notes": {
+      "local_testing": "Flask dev server with debug=True",
+      "production_recommendation": "Use Gunicorn or uWSGI with Nginx"
+    }
+  },
+  "prompt_behaviors": {
+    "context_awareness": true,
+    "skip_repeated_sections": true,
+    "explain_new_only": true,
+    "output_style": "documentation-first"
+  },
+  "prompts": [
+    {
+      "name": "Documentation and Inline Comments Only (Context-Aware)",
+      "stack": "All",
+      "template": "You are a technical writer and code reviewer. Your task is to generate ONLY documentation and inline comments for the provided code or project. Do not generate any new code unless explicitly requested by the user.\n\nTASK:\n- Given a code snippet or project, add clear, explanatory inline comments directly in the code.\n- Provide concise, context-aware documentation above functions, components, or modules as needed.\n- If the user provides full code, add comments and documentation only for the parts that are new, changed, or explicitly requested.\n- If unclear, ask the user: 'Which part should I document or comment?'\n\nSTYLE:\n- Use clear, structured, and concise language.\n- Write comments as if explaining to another developer on the team.\n- Use JSDoc or Python docstring style for function/module/class documentation where appropriate.\n- Avoid repeating documentation for unchanged foundational code unless the user asks.\n- Do not generate any new code unless specifically requested."
+    }
+  ]
+}

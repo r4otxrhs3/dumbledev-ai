@@ -7,6 +7,8 @@ const model = genAI.getGenerativeModel({
   model: "gemini-2.0-flash",
 });
 
+
+
 const generationConfig = {
   temperature: 1,
   topP: 0.95,
@@ -26,6 +28,41 @@ export const chatSession = model.startChat({
   generationConfig,
   history: [],
 });
+const template = require('./promptTemplates.json').promptTemplates[0];
+
+const buildPrompt = (featureFocus = "") => {
+  const {
+    name, user, project, instruction
+  } = template;
+
+  return `
+You are an AI assistant helping ${user.name}, an ${user.level}-level developer.
+They prefer ${user.preferences.outputFormat}-formatted documentation with ${user.preferences.tone} tone.
+${user.preferences.includeCode ? "Include code" : "Do not include any code"}.
+
+---
+
+### Project: ${project.title}
+Frontend: ${project.techStack.frontend.join(', ')}
+Backend: ${project.techStack.backend}
+Database: ${project.techStack.database}
+
+Completed Features:
+- ${project.features.completed.join('\n- ')}
+
+Pending Features:
+- ${project.features.pending.join('\n- ')}
+
+Security Notes:
+- ${project.securityNotes.join('\n- ')}
+
+---
+
+${instruction}
+
+${featureFocus ? `Focus this documentation on: ${featureFocus}` : ""}
+  `.trim();
+};
 
 // const result = await chatSession.sendMessage("INSERT_INPUT_HERE");
 // console.log(result.response.text());

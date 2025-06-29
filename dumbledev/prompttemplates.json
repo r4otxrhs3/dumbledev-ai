@@ -1,0 +1,49 @@
+{
+  "promptTemplates": [
+    {
+      "name": "Context-Aware Docs Only",
+      "type": "documentation",
+      "user": {
+        "name": "Dhritideep",
+        "level": "intermediate",
+        "preferences": {
+          "outputFormat": "markdown",
+          "tone": "concise",
+          "includeCode": false,
+          "includeExplanation": true,
+          "style": ["headings", "lists", "professional"],
+          "skipCompletedFeatures": true
+        }
+      },
+      "project": {
+        "title": "Online Clothing Store",
+        "techStack": {
+          "frontend": ["HTML", "CSS", "Jinja2"],
+          "backend": "Flask (Python)",
+          "database": "None (in-memory static dictionary)"
+        },
+        "features": {
+          "completed": [
+            "Product Listing (/)",
+            "Add to Cart (/add_to_cart/<id>)",
+            "View Cart (/cart)",
+            "Remove from Cart (/remove_from_cart/<id>)"
+          ],
+          "pending": [
+            "Checkout Flow",
+            "Session-based cart",
+            "Login/Signup",
+            "Coupons/Discounts",
+            "Responsive Design"
+          ]
+        },
+        "securityNotes": [
+          "No authentication",
+          "Cart is not session-safe",
+          "Inputs are not backend-validated"
+        ]
+      },
+      "instruction": "Generate only documentation (no code) for this project. Use markdown with headings and professional tone. Describe architecture, all implemented routes, template roles, data flow, placeholder logic, and deployment notes. Focus on functionality, design decisions, and security insights."
+    }
+  ]
+}
